@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
 import pandas as pd
+import os
 
 app = Flask(__name__)
 models = pickle.load(open('models.pckl', 'rb'))
@@ -30,4 +31,5 @@ def predict():
     return render_template('index.html', prediction_text='The AC power should be: {}'.format(str(round(prediction[0], 2))), Error = '{}'.format(Error))
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
