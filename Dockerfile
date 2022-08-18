@@ -7,8 +7,8 @@ WORKDIR /usr/app/
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-EXPOSE 5000
+EXPOSE 80
 
 RUN pip install -r requirements.txt
 
-CMD python app.py
+RUN ['gunicorn' '-w' '4' 'app:app']

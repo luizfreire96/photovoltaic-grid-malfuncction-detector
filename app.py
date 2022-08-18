@@ -31,5 +31,5 @@ def predict():
     return render_template('index.html', prediction_text='The AC power should be: {}'.format(str(round(prediction[0], 2))), Error = '{}'.format(Error))
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 80))
     app.run(host='0.0.0.0', port=port)
